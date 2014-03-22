@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+function allowDrop(ev)
+{
+	ev.preventDefault();
+}
+
+function drag(ev)
+{
+	dom = ev.currentTarget;
+	var aa = ''
+	if(dom.id != undefined)
+	{
+		aa = dom.id;
+		ev.dataTransfer.setData("Text",aa);
+	}
+	while(dom.parentNode != document.body){
+		if(dom.parentNode.id != undefined){
+			aa = dom.parentNode.id + '/' + aa;
+		}
+	}
+	ev.dataTransfer.setData("Text",aa);
+	console.log(aa);
+}
+
+function drop(ev)
+{
+	ev.preventDefault();
+	var data = ev.dataTransfer.getData("Text");
+	ev.target.innerHTML = data;
+}
+</script>
+</head>
+<body>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="width:400px;height:60px;background-color:#333;">1212</div>
+
+<img id="drag1" draggable="true" src="https://www.google.com.hk/images/nav_logo170_hr.png"
+ondragstart="drag(event)" width="336" height="69" />
+
+</body>
+</html>

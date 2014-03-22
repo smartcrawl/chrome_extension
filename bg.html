@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>2D Bar Code</title>
+</head>
+<body>
+<img id="barcode_img"src ="http://barcode.tec-it.com/barcode.ashx?code=QRCode&modulewidth=4&unit=px&data=http%3A%2F%2Fblog.csdn.net/horkychen&dpi=120&imagetype=png&rotation=0&color=&bgcolor=&fontcolor=&quiet=0&qunit=mm&eclevel="alt="by TEC-IT"/>
+
+<script type="text/javascript> 
+  chrome. tabs.getSelected(null,function(tab) {
+      changeBarCode( tab.url);
+      }
+  ) ;
+
+function changeBarCode (url) 
+{
+   var text = url;
+   if ( 0 == text.length ) 
+   {
+     text = "http://blog.csdn.net/horkychen";
+   }
+
+   var newPicUrl = "http://barcode.tec-it.com/barcode.ashx?code=QRCode&modulewidth=6&unit=px&data="+text+"&dpi=120&imagetype=png&rotation=0&color=&bgcolor=&fontcolor=&quiet=0&qunit=mm&eclevel=";
+
+   document.getElementById("barcode_img").src=newPicUrl;
+}
+</script> 
+</body>
+</html>

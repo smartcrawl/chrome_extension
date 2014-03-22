@@ -1,0 +1,20 @@
+{
+"name":"Scrapy Layer",
+"version":"1.0.0",
+"icons":{"128":"icon.png"},
+"manifest_version":2,
+"description":"A plain text descirption",
+"homepage_url":"http://www.litt.in",
+"background":{"scripts":["mouse_listener.js"]},
+"offline_enabled":true,
+"permissions":["notifications","contextMenus"],
+"content_scripts":[{
+	"matches":["http://www.baidu.com/*"],
+	"js":[	"jquery.min.js","goto.js"]
+	}],
+"browser_action":{
+		"default_title":"爬虫大师",
+		"default_icon":"icon.png",
+		"default_popup":"popup.html"
+	}
+}

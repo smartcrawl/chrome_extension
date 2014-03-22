@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+	<script src="jquery.min.js"></script>
+	<script type='text/javascript'>
+			var http = require('http');
+			var html = '';	
+			http.get("http://m.baidu.com",function(ct){
+				console.log("get response: "+ct);
+				html = ct;
+				ct.on('data',function(cc){
+					document.getElementById("subframe").innerHTML = cc;
+					child = document.getElementById("subframe").children;
+					child = child[4].children;
+					for(i=0;i<child.length;i++){
+						child[i].onmouseover = function(){
+							this.style.border = "ipx solid #999";
+						}
+					}
+				});
+			}).on('error',function(e){
+					console.log('ss',e.message);
+			}).
+			html;
+			function ondrop(ev){
+				ev.target.preventDefault();
+				id = ev.srcElement.id;
+				ev.target.value = id;
+				
+			}
+	</script>
+<body>
+
+
+<input type='text' id="crawl" style="width:100%;height:50px" ondrop="" value=""/>
+<div id='subframe'  width=100% height=700></div>
+</body>
+</html>
+
